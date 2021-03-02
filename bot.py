@@ -10,6 +10,8 @@ intents = discord.Intents.all()
 client = commands.Bot(command_prefix = '$', intents=intents)
 client.remove_command("$help")
 
+import ChessClient
+
 PREFIX = '$'
 
 match_requests = [ ]
@@ -59,8 +61,44 @@ async def server(ctx):
     """Shows server info"""
     channel = ctx.message.channel
 
-    embed = discord.Embed(title=server.name, description='Server Info', color=0xEE8700)
+    embed = discord.Embed(title = "Kaweees's Player Stats", url = "url goes here")
+    embed.title = server.name
+    embed.description = 'Server Info'
+    embed.color = 0x7fa650
+    embed.title = server.name
     await ctx.send(embed=embed) 
+
+
+@client.command()
+async def playerstats(ctx, username):
+    try:
+        data = ChessClientInstance.getPlayerInformation(username)
+        print(data)
+    except:
+        channel = ctx.message.channel
+        await channel.send('Invalid Chess.com username, please try again')
+    embed = makeEmbed(data)
+    await ctx.send(embed=embed) 
+
+def getToken():
+    # code to open and read token
+    with open('assets/token.txt', 'r') as file: # read file content
+        data = file.read().replace('\n', '')
+    return data # store file contents in data
+
+def makeEmbed(playerStats):
+    Chessplayer = ChessClient.Chessplayer(playerStats)
+    embed = discord.Embed()
+    embed.title = Chessplayer.embedname
+    embed.url = Chessplayer.url
+    print(Chessplayer.avatarurl, "url boiii")
+    embed.set_thumbnail(url=Chessplayer.avatarurl)
+    embed.description = 'Server Info'
+    embed.color = Chessplayer.color
+    return embed
+
+ChessClientInstance = ChessClient.ChessClient()
+client.run(getToken())
 
 def getToken():
     # code to open and read token
