@@ -2,22 +2,18 @@
 # https://discord.com/api/oauth2/authorize?client_id=744024313476415540&permissions=8&scope=bot
 
 import discord
+from discord.ext import commands
+from discord.utils import get
 import json
 
-client = discord.Client()
+intents = discord.Intents.all()
+client = commands.Bot(command_prefix = '$', intents=intents)
+client.remove_command("$help")
 
 PREFIX = '$'
 
 match_requests = [ ]
 matches = [ ]
-
-async def challenge(challenger: discord.Member, member: discord.Member):
-    global match_requests
-
-    # maybe convert to a class
-    match_requests.append({
-        'challenger': challenger, 'member': member
-    })
 
 @client.event
 async def on_ready():
@@ -26,13 +22,10 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
 @client.event
-async def on_message(message: discord.Message):
+async def on_message(message):
+    await client.process_commands(message)
     global PREFIX
     global match_requests
-
-    if message.author == client.user:
-        return
-
     if message.content.startswith(PREFIX):
         command = message.content[1:]
         if command.startswith('hello'):
@@ -52,6 +45,22 @@ async def on_message(message: discord.Message):
             if not found:
                 await message.channel.send('No pending challenges!')
 
+@client.command()
+async def challenge(challenger: discord.Member, member: discord.Member):
+    global match_requests
+
+    # maybe convert to a class
+    match_requests.append({
+        'challenger': challenger, 'member': member
+    })
+
+@client.command()
+async def server(ctx):
+    """Shows server info"""
+    channel = ctx.message.channel
+
+    embed = discord.Embed(title=server.name, description='Server Info', color=0xEE8700)
+    await ctx.send(embed=embed) 
 
 def getToken():
     # code to open and read token
