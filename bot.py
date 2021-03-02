@@ -3,12 +3,11 @@
 
 import discord
 import json
-print(discord._version)
 
 client = discord.Client()
 
 @client.event
-async def on_ready(self):
+async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game(name="Chess :D"))
     print("My body is ready")
     print('We have logged in as {0.user}'.format(client))
@@ -23,9 +22,8 @@ async def on_message(message):
 
 def getToken():
     # code to open and read token
-    with open('assts/token.txt', 'r') as file: # read file content
+    with open('assets/token.txt', 'r') as file: # read file content
         data = file.read().replace('\n', '')
     return data # store file contents in data
 
-client = discord.Client()
 client.run(getToken())
