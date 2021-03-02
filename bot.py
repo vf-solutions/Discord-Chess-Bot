@@ -6,6 +6,8 @@ import json
 
 client = discord.Client()
 
+PREFIX = '$'
+
 @client.event
 async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game(name="Chess :D"))
@@ -14,11 +16,15 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    global PREFIX
+
     if message.author == client.user:
         return
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+    if message.content.startswith(PREFIX):
+        command = message.content[1:]
+        if command.startswith('hello'):
+            await message.channel.send('Hello!')
 
 def getToken():
     # code to open and read token
