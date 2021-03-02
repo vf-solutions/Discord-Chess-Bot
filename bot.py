@@ -35,7 +35,7 @@ async def challenge(ctx: discord.ext.commands.Context):
     match_requests.append({
         'challenger': challenger, 'member': member
     })
-    await message.channel.send('User {0.display_name}#{0.discriminator} has been challenged!'.format(message.mentions[0]))
+    await ctx.send('User {0.display_name}#{0.discriminator} has been challenged!'.format(message.mentions[0]))
 
 @client.command()
 async def accept(ctx: discord.ext.commands.Context):
