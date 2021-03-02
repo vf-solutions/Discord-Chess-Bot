@@ -10,8 +10,6 @@ intents = discord.Intents.all()
 client = commands.Bot(command_prefix = '$', intents=intents)
 client.remove_command("$help")
 
-PREFIX = '$'
-
 match_requests = [ ]
 matches = [ ]
 
@@ -24,35 +22,38 @@ async def on_ready():
 @client.event
 async def on_message(message):
     await client.process_commands(message)
-    global PREFIX
-    global match_requests
-    if message.content.startswith(PREFIX):
-        command = message.content[1:]
-        if command.startswith('hello'):
-            await message.channel.send('Hello!')
-        elif command.startswith('challenge'):
-            await challenge(message.author, message.mentions[0])
-            await message.channel.send('User {0.display_name}#{0.discriminator} has been challenged!'.format(message.mentions[0]))
-        elif command.startswith('accept'):
-            found = False
-            for request in match_requests:
-                # we have found the request
-                if request['member'].id == message.author.id:
-                    await message.channel.send('Challenge from <@{0.id}> has been accepted!'.format(request['challenger']))
-                    matches.append(request)
-                    match_requests.remove(request)
-                    found = True
-            if not found:
-                await message.channel.send('No pending challenges!')
 
 @client.command()
-async def challenge(challenger: discord.Member, member: discord.Member):
+async def challenge(ctx: discord.ext.commands.Context):
+    """Challenges user to a match"""
     global match_requests
+    message = ctx.message
 
+    challenger = message.author
+    member = message.mentions[0]
     # maybe convert to a class
     match_requests.append({
         'challenger': challenger, 'member': member
     })
+    await message.channel.send('User {0.display_name}#{0.discriminator} has been challenged!'.format(message.mentions[0]))
+
+@client.command()
+async def accept(ctx: discord.ext.commands.Context):
+    """Accepts a user's request"""
+    global match_requests
+    global matches
+    message = ctx.message
+
+    found = False
+    for request in match_requests:
+        # we have found the request
+        if request['member'].id == message.author.id:
+            await message.channel.send('Challenge from <@{0.id}> has been accepted!'.format(request['challenger']))
+            matches.append(request)
+            match_requests.remove(request)
+            found = True
+    if not found:
+        await message.channel.send('No pending challenges!')
 
 @client.command()
 async def server(ctx):
