@@ -48,12 +48,12 @@ async def accept(ctx: discord.ext.commands.Context):
     for request in match_requests:
         # we have found the request
         if request['member'].id == message.author.id:
-            await message.channel.send('Challenge from <@{0.id}> has been accepted!'.format(request['challenger']))
+            await ctx.send('Challenge from <@{0.id}> has been accepted!'.format(request['challenger']))
             matches.append(request)
             match_requests.remove(request)
             found = True
     if not found:
-        await message.channel.send('No pending challenges!')
+        await ctx.send('No pending challenges!')
 
 @client.command()
 async def server(ctx):
