@@ -3,7 +3,7 @@
 
 In this repository, you will find the source code for the a Discord bot that is capable of hosting multiplayer chess games and Chess.com player information wrapper. Enjoy!
 
-# How to Access the Bot
+# How to Use the Bot
 ## Method 1: Invite Link:
 In the case you are interested in just using the bot, you can invite the bot to your server by following [this link](https://discord.com/api/oauth2/authorize?client_id=744024313476415540&permissions=8&scope=bot).
 
