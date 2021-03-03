@@ -3,7 +3,7 @@
 <div align="left">
 <a href="https://github.com/Kaweees/Discord-chess-bots/stargazers"><img src="https://img.shields.io/github/stars/Kaweees/Discord-chess-bot" alt="Stars Badge"/></a>
 <a href="https://github.com/Kaweees/Discord-chess-bot/members"><img src="https://img.shields.io/github/forks/Kaweees/Discord-chess-bot" alt="Forks Badge"/></a>
-<a href="https://github.com/elangosundar/Kaweees/Discord-chess-bot/   pulls"><img src="https://img.shields.io/github/issues-pr/Kaweees/Discord-chess-bot" alt="Pull Requests Badge"/></a>
+<a href="https://github.com/elangosundar/Kaweees/Discord-chess-bot/pulls"><img src="https://img.shields.io/github/issues-pr/Kaweees/Discord-chess-bot" alt="Pull Requests Badge"/></a>
 <a href="https://github.com/elangosundar/Kaweees/Discord-chess-bot"><img src="https://img.shields.io/github/issues/Kaweees/Discord-chess-bot" alt="Issues Badge"/></a>
 <a href="https://github.com/Kaweees/Discord-chess-bot"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Kaweees/Discord-chess-bots?color=2b9348"></a>
 <a href="https://github.com/Kaweees/Discord-chess-bots/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Kaweees/Discord-chess-bots?color=2b9348" alt="License Badge"/></a>
