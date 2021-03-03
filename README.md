@@ -1,6 +1,14 @@
 # Discord-Chess-Bot
 ![Chess-Bot Logo](/assets/img/chess.png)
-
+<div align="left">
+<a href="https://github.com/Kaweees/Discord-chess-bots/stargazers"><img src="https://img.shields.io/github/stars/Kaweees/Discord-chess-bot" alt="Stars Badge"/></a>
+<a href="https://github.com/Kaweees/Discord-chess-bot/members"><img       src="https://img.shields.io/github/forks/Kaweees/Discord-chess-bot"       alt="Forks Badge"/></a>
+<a href="https://github.com/elangosundar/Kaweees/Discord-chess-bot/   pulls"><img src="https://img.shields.io/github/issues-pr/Kaweees/      Discord-chess-bot" alt="Pull Requests Badge"/></a>
+<a href="https://github.com/elangosundar/Kaweees/Discord-chess-bot"><img      src="https://img.shields.io/github/issues/Kaweees/Discord-chess-bot"     alt="Issues Badge"/></a>
+<a href="https://github.com/Kaweees/Discord-chess-bot"><img alt="GitHub       contributors" src="https://img.shields.io/github/contributors/Kaweees/    Discord-chess-bots?color=2b9348"></a>
+<a href="https://github.com/Kaweees/Discord-chess-bots/blob/master/   LICENSE"><img src="https://img.shields.io/github/license/Kaweees/      Discord-chess-bots?color=2b9348" alt="License Badge"/></a>
+</div>
+<br>
 In this repository, you will find the source code for the a Discord bot that is capable of hosting multiplayer chess games and Chess.com player information wrapper. Enjoy!
 
 # How to Use the Bot
@@ -58,3 +66,14 @@ async-timeout==3.0.1
 5. Repeat steps 2-4 whenever the Main Branch is updated to have access the latest features of the bot.
 6. Go to `Resources`. Press `Edit`, and hit the sliding button so that it is on and hit `Confirm`.
 7. The bot should be active after a few minutes. Enjoy!
+
+# Contribute
+Contributions are always welcome! Please create a PR and include a description of how your PR will improve the overall program and what it does.
+
+## License
+
+This project is licensed under [MIT](https://opensource.org/licenses/MIT) license.
+
+## Support Us!
+
+Give this repo a ⭐️ if you found this project helpful!
