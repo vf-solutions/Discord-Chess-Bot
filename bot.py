@@ -51,7 +51,13 @@ async def accept(ctx: discord.ext.commands.Context):
     for request in match_requests:
         # we have found the request
         if request.players[1].id == message.author.id:
-            await ctx.send('Challenge from <@{0.id}> has been accepted!'.format(request.players[0]))
+            svg = request.board_to_svg()
+            with open('board.svg', 'w') as f:
+                f.write(svg)
+                cairosvg.svg2png(url='board.svg', write_to='board.png')
+                fi = discord.File('board.png')
+                await ctx.send('Challenge from <@{0.id}> has been accepted!'.format(request.players[0]))
+                await ctx.send('It is <@{0.id}>\'s turn!'.format(request.player), file=fi)
             matches.append(request)
             match_requests.remove(request)
             found = True
@@ -71,7 +77,17 @@ async def move(ctx: discord.ext.commands.Context):
         # we have found the match
         if match.player.id == message.author.id:
             found = True
-            if not match.make_move(move):
+            valid, result = match.make_move(move)
+            winner = None
+            draw = False
+            if result is not None:
+                if result == '1-0':
+                    winner = match.player
+                elif result == '0-1':
+                    winner = match.players[match.moves % 2]
+                elif result == '1/2-1/2':
+                    draw = True
+            if not valid:
                 await ctx.send('Invalid move, \'{0}\''.format(move))
             else:
                 svg = match.board_to_svg()
@@ -79,7 +95,14 @@ async def move(ctx: discord.ext.commands.Context):
                     f.write(svg)
                     cairosvg.svg2png(url='board.svg', write_to='board.png')
                     fi = discord.File('board.png')
-                    await ctx.send(file=fi)
+                    m = 'It is now <@{0.id}>\'s turn!'.format(match.player)
+                    if winner is not None:
+                        m = '<@{0.id}> wins!'.format(winner)
+                    elif draw is True:
+                        m = 'The match was a draw!'
+                    await ctx.send(m, file=fi)
+            if result is not None:
+                matches.remove(match)
     if not found:
         await ctx.send('No match currently.')
 

@@ -11,14 +11,20 @@ class ChessGame:
         self.players = (challenger, member)
 
     def make_move(self, move):
-        uci = chess.Move.from_uci(move)
+        try:
+            uci = chess.Move.from_uci(move)
+        except ValueError as e:
+            return False
         if uci in self.board.legal_moves:
             self.board.push(uci)
             self.moves += 1
+            self.board.apply_mirror()
+            if self.board.is_game_over():
+                return (True, self.board.result())
             self.player = self.players[self.moves % 2]
-            return True
+            return (True, None)
         else:
-            return False
+            return (False, None)
 
     def board_to_svg(self):
         return chess.svg.board(self.board, size=350)
