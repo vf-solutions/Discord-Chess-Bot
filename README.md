@@ -13,7 +13,7 @@ In this repository, you will find the source code for the a Discord bot that is 
 
 # How to Use the Bot
 ## Method 1: Invite Link:
-In the case you are interested in just using the bot, you can invite the bot to your server by following [this link](https://discord.com/api/oauth2/authorize?client_id=744024313476415540&permissions=8&scope=bot).
+In the case you are interested in just using the bot, you can invite the bot to your server by following [this link](https://discord.com/oauth2/authorize?client_id=721521983518670959&permissions=8&scope=bot).
 
 ## Method 2: Hosting it Independently
 ### Installation Instructions
@@ -23,7 +23,7 @@ Once the downloaded file is extracted into a separate folder, follow these instr
 ### Discord.py + Other Dependencies Setup
 1. Use the command `pip install Discord` in cmd or terminal to install `Discord.py 1.6.1` or the latest version.
 2. Use the command `pip install chess.com` in cmd or terminal to install `Chess.com Wrapper 1.2.1` or the latest version.
-3. Use the command `pip install chess` in cmd or terminal to install `python-chess 1.4.1` or the latest version. Also download `ChessGame` the [here](https://github.com/ljordan51/ChessGame) and download it in the root directory.
+3. Use the command `pip install chess` in cmd or terminal to install `python-chess 1.4.1` or the latest version.
 4. Use the command `pip install cairosvg` in cmd or terminal to install `CairoSVG 1.1` or the latest version.
 5. Documentation for Discord.py could be found [here](https://discordpy.readthedocs.io/en/latest/index.html).
 6. Documentation for Chess.com Wrapper could be found [here](https://chesscom.readthedocs.io/en/latest/) and [here](https://www.chess.com/news/view/published-data-api).
