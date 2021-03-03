@@ -8,14 +8,18 @@
 <a href="https://github.com/Kaweees/Discord-Chess-Bot"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Kaweees/Discord-Chess-Bot?color=2b9348"></a>
 <a href="https://github.com/Kaweees/Discord-Chess-Bot/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Kaweees/Discord-Chess-Bot?color=2b9348" alt="License Badge"/></a>
 </div>
+
 <br>
+
 In this repository, you will find the source code for the a Discord bot that is capable of hosting multiplayer chess games and Chess.com player information wrapper. Enjoy!
+
+<br>
 
 # How to Use the Bot
 ## Method 1: Invite Link:
 In the case you are interested in just using the bot, you can invite the bot to your server by following [this link](https://discord.com/oauth2/authorize?client_id=721521983518670959&permissions=8&scope=bot).
 
-## Method 2: Hosting it Independently
+## Method 2: Running it Independently
 ### Installation Instructions
 You can download or modify the program by Cloning or Downloading the project or by saving it as a ".zip" file.
 Once the downloaded file is extracted into a separate folder, follow these instructions:
@@ -32,7 +36,12 @@ Once the downloaded file is extracted into a separate folder, follow these instr
 ### Before Running
 1. Open `token.txt` and copy and paste the Discord Token so that the corresponding Discord bot is able to run the given program.
 
-## Running via Heroku
+## Running locally
+In the case 
+1. Open cmd and navigate to the directory where the source code for this project can be found.
+2. Once on the root directory of this project, run `python filepath/bot.py`
+
+## Hosting via Heroku
 ### Via Heroku Git
 1. Log onto Heroku.
 2. Create a new application or open an existing application. Note the name of the application.
@@ -67,13 +76,13 @@ async-timeout==3.0.1
 6. Go to `Resources`. Press `Edit`, and hit the sliding button so that it is on and hit `Confirm`.
 7. The bot should be active after a few minutes. Enjoy!
 
+<br>
+
 # Contribute
-Contributions are always welcome! Please create a PR and include a description of how your PR will improve the overall program and what it does.
+Contributions are always welcome! Please create a PR and include a description of how your PR will improve the overall program and what it does. [Contributin to a project guide](https://github.com/firstcontributions/first-contributions).
 
 ## License
-
 This project is licensed under [MIT](https://opensource.org/licenses/MIT) license.
 
 ## Support Us!
-
 Give this repo a ⭐️ if you found this project helpful!

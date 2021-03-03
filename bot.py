@@ -1,5 +1,5 @@
 # invite link:
-# https://discord.com/api/oauth2/authorize?client_id=744024313476415540&permissions=8&scope=bot
+# https://discord.com/oauth2/authorize?client_id=721521983518670959&permissions=8&scope=bot
 
 import discord
 from discord.ext import commands
