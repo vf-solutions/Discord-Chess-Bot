@@ -1,12 +1,12 @@
 # Discord-Chess-Bot
 ![Chess-Bot Logo](/assets/img/chess.png)
 <div align="left">
-<a href="https://github.com/Kaweees/Discord-chess-bot/stargazers"><img src="https://img.shields.io/github/stars/Kaweees/Discord-chess-bot" alt="Stars Badge"/></a>
-<a href="https://github.com/Kaweees/Discord-chess-bot/members"><img src="https://img.shields.io/github/forks/Kaweees/Discord-chess-bot" alt="Forks Badge"/></a>
-<a href="https://github.com/elangosundar/Kaweees/Discord-chess-bot/pulls"><img src="https://img.shields.io/github/issues-pr/Kaweees/Discord-chess-bot" alt="Pull Requests Badge"/></a>
-<a href="https://github.com/elangosundar/Kaweees/Discord-chess-bot"><img src="https://img.shields.io/github/issues/Kaweees/Discord-chess-bot" alt="Issues Badge"/></a>
-<a href="https://github.com/Kaweees/Discord-chess-bot"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Kaweees/Discord-chess-bot?color=2b9348"></a>
-<a href="https://github.com/Kaweees/Discord-chess-bot/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Kaweees/Discord-chess-bot?color=2b9348" alt="License Badge"/></a>
+<a href="https://github.com/Kaweees/Discord-Chess-Bot/stargazers"><img src="https://img.shields.io/github/stars/Kaweees/Discord-Chess-Bot" alt="Stars Badge"/></a>
+<a href="https://github.com/Kaweees/Discord-Chess-Bot/members"><img src="https://img.shields.io/github/forks/Kaweees/Discord-Chess-Bot" alt="Forks Badge"/></a>
+<a href="https://github.com/elangosundar/Kaweees/Discord-Chess-Bot/pulls"><img src="https://img.shields.io/github/issues-pr/Kaweees/Discord-Chess-Bot" alt="Pull Requests Badge"/></a>
+<a href="https://github.com/elangosundar/Kaweees/Discord-Chess-Bot"><img src="https://img.shields.io/github/issues/Kaweees/Discord-Chess-Bot" alt="Issues Badge"/></a>
+<a href="https://github.com/Kaweees/Discord-Chess-Bot"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Kaweees/Discord-Chess-Bot?color=2b9348"></a>
+<a href="https://github.com/Kaweees/Discord-Chess-Bot/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Kaweees/Discord-Chess-Bot?color=2b9348" alt="License Badge"/></a>
 </div>
 <br>
 In this repository, you will find the source code for the a Discord bot that is capable of hosting multiplayer chess games and Chess.com player information wrapper. Enjoy!
