@@ -4,8 +4,8 @@
 import discord
 from discord.ext import commands
 from discord.utils import get
-import json
 
+import json
 import ChessClient # for all of the Chess.com API data scrapping
 
 intents = discord.Intents.all()
@@ -62,23 +62,25 @@ async def server(ctx):
     """Shows server info"""
     channel = ctx.message.channel
 
-    embed = discord.Embed(title = "Kaweees's Player Stats", url = "url goes here")
+    embed = discord.Embed(title = "Kaweees's Player Stats", url = "https://google.com")
     embed.title = server.name
     embed.description = 'Server Info'
     embed.color = 0x7fa650
     embed.title = server.name
-    await ctx.send(embed=embed) 
+    await ctx.send(embed=embed)
+    await ctx.send(":flag_us: :flag_US: ")
 
 
 @client.command()
 async def playerstats(ctx, username):
     try:
-        data = ChessClientInstance.getPlayerInformation(username)
-        print(data)
+        playerGeneralData = ChessClientInstance.getPlayerInformation(username)
+        print("Sucessfully fetched Data :D")
     except:
         channel = ctx.message.channel
         await channel.send('Invalid Chess.com username, please try again')
-    embed = makeEmbed(data)
+    
+    embed = makeEmbed(playerGeneralData)
     await ctx.send(embed=embed) 
 
 def getToken():
@@ -89,13 +91,21 @@ def getToken():
 
 def makeEmbed(playerStats):
     Chessplayer = ChessClient.Chessplayer(playerStats)
+    playerStatsData = ChessClientInstance.getPlayerStats(Chessplayer.username)
+    Chessplayer.updatePlayerStats(playerStatsData)
     embed = discord.Embed()
     embed.title = Chessplayer.embedname
     embed.url = Chessplayer.url
-    print(Chessplayer.avatarurl, "url boiii")
     embed.set_thumbnail(url=Chessplayer.avatarurl)
-    embed.description = 'Server Info'
+    embed.description = 'Player Info and Stats'
     embed.color = Chessplayer.color
+    embed.add_field(name = "Country:", value = Chessplayer.getCountry(Chessplayer.country), inline = True)
+    embed.add_field(name = "Date Joined:", value = f"{Chessplayer.dateJoined}", inline = True)
+    embed.add_field(name = "Last Online:", value = f"{Chessplayer.lastOnline}", inline = True)
+    embed.add_field(name = "<:bullet:816514940327297035> Bullet [x games played]", value = f"Rating: **x** - Highest Rating **{str(Chessplayer.chessBulletBest)}**", inline = False)
+    embed.add_field(name = "<:blitz:816501491266355221> Blitz: [x games played]", value = f"Rating: **x** - Highest Rating **{str(Chessplayer.chessBlitzBest)}**", inline = False)
+    embed.add_field(name = "<:rapid:816501511101087802> Rapid: [x games played]", value = f"Rating: **x** - Highest Rating **{str(Chessplayer.chessRapidBest)}**", inline = False)
+    embed.add_field(name = "<:daily:816501455401648169> Daily: [x games played]", value = f"Rating: **x** - Highest Rating **{str(Chessplayer.chessDailyBest)}**", inline = False)
     return embed
 
 ChessClientInstance = ChessClient.ChessClient()
