@@ -6,7 +6,10 @@ from discord.ext import commands
 from discord.utils import get
 import json
 
+import cairosvg
+
 import ChessClient # for all of the Chess.com API data scrapping
+import ChessGame as chessgame
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix = '$', intents=intents)
@@ -33,10 +36,8 @@ async def challenge(ctx: discord.ext.commands.Context):
 
     challenger = message.author
     member = message.mentions[0]
-    # maybe convert to a class
-    match_requests.append({
-        'challenger': challenger, 'member': member
-    })
+
+    match_requests.append(chessgame.ChessGame(challenger, member))
     await ctx.send('User {0.display_name}#{0.discriminator} has been challenged!'.format(message.mentions[0]))
 
 @client.command()
@@ -49,13 +50,55 @@ async def accept(ctx: discord.ext.commands.Context):
     found = False
     for request in match_requests:
         # we have found the request
-        if request['member'].id == message.author.id:
-            await ctx.send('Challenge from <@{0.id}> has been accepted!'.format(request['challenger']))
+        if request.players[1].id == message.author.id:
+            await ctx.send('Challenge from <@{0.id}> has been accepted!'.format(request.players[0]))
             matches.append(request)
             match_requests.remove(request)
             found = True
     if not found:
         await ctx.send('No pending challenges!')
+
+@client.command()
+async def move(ctx: discord.ext.commands.Context):
+    """Makes move"""
+    global matches
+
+    message = ctx.message
+    move = message.content.split(' ')[1]
+
+    found = False
+    for match in matches:
+        # we have found the match
+        if match.player.id == message.author.id:
+            found = True
+            if not match.make_move(move):
+                await ctx.send('Invalid move, \'{0}\''.format(move))
+            else:
+                svg = match.board_to_svg()
+                with open('board.svg', 'w') as f:
+                    f.write(svg)
+                    cairosvg.svg2png(url='board.svg', write_to='board.png')
+                    fi = discord.File('board.png')
+                    await ctx.send(file=fi)
+    if not found:
+        await ctx.send('No match currently.')
+
+@client.command()
+async def end(ctx: discord.ext.commands.Context):
+    """Ends match, what a loser"""
+    global matches
+
+    message = ctx.message
+
+    found = False
+    for match in matches:
+        # we have found the match
+        if match.player.id == message.author.id:
+            found = True
+            matches.remove(match)
+            await ctx.send('Match forfeited.')
+    if not found:
+        await ctx.send('No match currently.')
 
 @client.command()
 async def server(ctx):
@@ -68,7 +111,6 @@ async def server(ctx):
     embed.color = 0x7fa650
     embed.title = server.name
     await ctx.send(embed=embed) 
-
 
 @client.command()
 async def playerstats(ctx, username):
@@ -99,12 +141,4 @@ def makeEmbed(playerStats):
     return embed
 
 ChessClientInstance = ChessClient.ChessClient()
-client.run(getToken())
-
-def getToken():
-    # code to open and read token
-    with open('assets/token.txt', 'r') as file: # read file content
-        data = file.read().replace('\n', '')
-    return data # store file contents in data
-
 client.run(getToken())
