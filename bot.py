@@ -11,6 +11,8 @@ import ChessClient # for all of the Chess.com API data scrapping
 import cairosvg
 import ChessGame as chessgame # for the Discord-based Chess game
 
+import os
+
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix = '$', intents=intents)
 client.remove_command("$help")
@@ -150,9 +152,7 @@ async def playerstats(ctx, username):
 
 def getToken():
     # code to open and read token
-    with open('assets/token.txt', 'r') as file: # read file content
-        data = file.read().replace('\n', '')
-    return data # store file contents in data
+    return os.environ.get('TOKEN')
 
 def makeEmbed(playerStats):
     Chessplayer = ChessClient.Chessplayer(playerStats)
