@@ -79,7 +79,7 @@ async-timeout==3.0.1
 <br>
 
 # Contribute
-Contributions are always welcome! Please create a PR and include a description of how your PR will improve the overall program and what it does. [Contributin to a project guide](https://github.com/firstcontributions/first-contributions).
+Contributions are always welcome! Please create a PR and include a description of how your PR will improve the overall program and what it does. [Making Contributions to a project guide](https://github.com/firstcontributions/first-contributions).
 
 ## License
 This project is licensed under [MIT](https://opensource.org/licenses/MIT) license.
