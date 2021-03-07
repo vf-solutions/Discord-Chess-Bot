@@ -11,7 +11,7 @@
 
 <br>
 
-In this repository, you will find the source code for the a Discord bot that is capable of hosting multiplayer chess games and Chess.com player information wrapper. Enjoy!
+In this repository, you will find the source code for a Discord bot that is capable of hosting multiplayer chess games and Chess.com player information wrapper. Enjoy!
 
 <br>
 
