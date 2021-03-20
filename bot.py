@@ -151,8 +151,13 @@ async def playerstats(ctx, username):
     await ctx.send(embed=embed) 
 
 def getToken():
-    # code to open and read token
-    return os.environ.get('TOKEN')
+    try:
+        # code to open and read token
+        return os.environ.get('TOKEN')
+    except:
+        with open('assets/token.txt', 'r') as file: # read file content
+            data = file.read().replace('\n', '')
+        return data # store file contents in data
 
 def makeEmbed(playerStats):
     Chessplayer = ChessClient.Chessplayer(playerStats)
