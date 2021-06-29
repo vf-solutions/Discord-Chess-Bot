@@ -39,7 +39,7 @@ Once the downloaded file is extracted into a separate folder, follow these instr
 ## Running locally
 In the case 
 1. Open cmd and navigate to the directory where the source code for this project can be found.
-2. Once on the root directory of this project, run `python filepath/bot.py`
+2. Once on the root directory of this project, run `python filepath/local-bot.py`
 
 ## Hosting via Heroku
 ### Via Heroku Git
